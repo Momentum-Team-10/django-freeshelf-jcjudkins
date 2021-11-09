@@ -8,3 +8,17 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __repr__(self):
+        return f"<Book title={self.title} author={self.author}>"
+
+    def __str__(self):
+        return self.title
+
+
