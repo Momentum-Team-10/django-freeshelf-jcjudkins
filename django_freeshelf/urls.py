@@ -20,13 +20,13 @@ from django.urls import include
 from books import views as book_views
 
 urlpatterns = [
-    path("", book_views.homepage, name="home"),
+    path("admin/", admin.site.urls),
+    path("", book_views.homepage, name="homepage"),
     path("books/", book_views.list_books, name="list_books"),
-    path("books/new", book_views.add_book, name="add_book"),
+    path("books/add", book_views.add_book, name="add_book"),
     path("books/<int:pk>", book_views.show_book, name="show_book"),
     path("books/<int:pk>/edit", book_views.edit_book, name="edit_book"),
     path("books/<int:pk>/delete", book_views.delete_book, name="delete_book"),
-    path("admin/", admin.site.urls),
     path("accounts/", include('registration.backends.simple.urls')),
 ]
 

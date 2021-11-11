@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ book.title }}</h1>
+{% if book.cover_image %}
+<img src='{{ book.cover_image }}'>
+{% endif %}
+<h3>by {{ book.auther }}</h3>
+<h3>
+    <a href="{{ book.url }}">Buy Here</a>
+</h3>
+<h3>{{ book.description }}</h3>
+<h4>Added On: {{ books.created_at }}</h4>
+{% endblock %}

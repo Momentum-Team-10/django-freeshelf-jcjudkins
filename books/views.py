@@ -12,11 +12,12 @@ def homepage(request):
         return redirect("list_books")
     return render(request, "books/homepage.html")
 
-@login_required
+
 def list_books(request):
-    books = Book.objects.all().order_by("created_at")
+    book = Book.objects.all().order_by("created_at")
     return render(request, "books/list_books.html")
 
+@login_required
 def add_book(request):
     if request.method == "POST":
         form = BookForm(data=request.POST)
@@ -27,10 +28,15 @@ def add_book(request):
     else:
         form = BookForm()
 
+    return render(request, "books/add_book.html", {"form": form})
+
+
+@login_required
 def show_book(request):
     book = get_object_or_404(Book, pk=pk)
     return render(request, "books/show_book.html", {"book": book})
 
+@login_required
 def edit_book(request):
     book = get_object_or_404(Book, pk=pk)
     if request.method == "GET":
@@ -43,6 +49,7 @@ def edit_book(request):
     
     return render(request, "books/edit_book.html", {"form": form, "book": book})
 
+@login_required
 def delete_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
 

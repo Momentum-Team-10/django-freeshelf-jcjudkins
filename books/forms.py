@@ -17,4 +17,10 @@ class UserChangeForm(UserChangeForm):
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ["title", "author"]
+        fields = [
+        "title",
+        "author",
+        "description",
+        "url",
+        "created_at",
+        ]
